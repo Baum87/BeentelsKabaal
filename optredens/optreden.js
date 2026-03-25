@@ -51,6 +51,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowRight') { current = (current + 1) % cells.length; updateLightbox(); }
   });
 
+  // Swipe-ondersteuning in lightbox op mobiel
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      current = diff > 0
+        ? (current + 1) % cells.length
+        : (current - 1 + cells.length) % cells.length;
+      updateLightbox();
+    }
+  }, { passive: true });
+
   // Fade-in
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } });

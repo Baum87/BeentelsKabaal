@@ -63,6 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
         resetAuto();
       });
     });
+
+    // Swipe-ondersteuning op mobiel
+    const slider = document.getElementById('quoteSlider');
+    if (slider) {
+      let touchStartX = 0;
+      slider.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].clientX;
+      }, { passive: true });
+      slider.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          showSlide(diff > 0 ? current + 1 : current - 1);
+          resetAuto();
+        }
+      }, { passive: true });
+    }
+
     startAuto();
   }
 
