@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky-k" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d2240"/>
+      <stop offset="50%" stop-color="#c25a0a"/>
+      <stop offset="100%" stop-color="#e8a020"/>
+    </linearGradient>
+    <linearGradient id="ground-k" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1408"/>
+      <stop offset="100%" stop-color="#0a0802"/>
+    </linearGradient>
+    <radialGradient id="glow-k" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="rgba(232,160,32,0.35)"/>
+      <stop offset="100%" stop-color="rgba(232,160,32,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="800" height="500" fill="url(#sky-k)"/>
+  <!-- Glow around stage area -->
+  <rect width="800" height="500" fill="url(#glow-k)"/>
+
+  <!-- Buildings left -->
+  <rect x="0" y="155" width="90" height="195" fill="#0a0a12" rx="2"/>
+  <rect x="10" y="140" width="70" height="30" fill="#0a0a12"/>
+  <rect x="95" y="190" width="70" height="160" fill="#0d0d18" rx="2"/>
+  <rect x="165" y="210" width="55" height="140" fill="#0a0a12" rx="2"/>
+  <!-- Windows left -->
+  <rect x="20" y="175" width="12" height="12" fill="rgba(255,200,80,0.4)" rx="1"/>
+  <rect x="42" y="175" width="12" height="12" fill="rgba(255,200,80,0.25)" rx="1"/>
+  <rect x="20" y="200" width="12" height="12" fill="rgba(255,200,80,0.3)" rx="1"/>
+  <rect x="42" y="200" width="12" height="12" fill="rgba(255,200,80,0.5)" rx="1"/>
+  <rect x="20" y="225" width="12" height="12" fill="rgba(255,200,80,0.2)" rx="1"/>
+
+  <!-- Buildings right -->
+  <rect x="640" y="170" width="90" height="180" fill="#0a0a12" rx="2"/>
+  <rect x="650" y="155" width="70" height="30" fill="#0a0a12"/>
+  <rect x="730" y="195" width="70" height="155" fill="#0d0d18" rx="2"/>
+  <!-- Windows right -->
+  <rect x="650" y="190" width="12" height="12" fill="rgba(255,200,80,0.3)" rx="1"/>
+  <rect x="672" y="190" width="12" height="12" fill="rgba(255,200,80,0.45)" rx="1"/>
+  <rect x="650" y="215" width="12" height="12" fill="rgba(255,200,80,0.2)" rx="1"/>
+  <rect x="672" y="215" width="12" height="12" fill="rgba(255,200,80,0.35)" rx="1"/>
+
+  <!-- Ground -->
+  <rect y="350" width="800" height="150" fill="url(#ground-k)"/>
+
+  <!-- Stage platform -->
+  <rect x="180" y="230" width="440" height="130" fill="#111108" rx="6"/>
+  <rect x="175" y="355" width="450" height="14" fill="#c9a84c" rx="3"/>
+  <!-- Stage lights from above -->
+  <polygon points="300,230 260,130 340,130" fill="rgba(201,168,76,0.12)"/>
+  <polygon points="400,230 365,130 435,130" fill="rgba(255,200,80,0.10)"/>
+  <polygon points="500,230 460,130 540,130" fill="rgba(201,168,76,0.12)"/>
+  <!-- Light bars top -->
+  <rect x="255" y="128" width="85" height="8" fill="#222" rx="2"/>
+  <rect x="360" y="128" width="80" height="8" fill="#222" rx="2"/>
+  <rect x="455" y="128" width="85" height="8" fill="#222" rx="2"/>
+
+  <!-- Musician silhouettes -->
+  <!-- Person 1 - trompet -->
+  <circle cx="245" cy="275" r="11" fill="#0d0d0d"/>
+  <rect x="237" y="285" width="16" height="45" fill="#0d0d0d" rx="2"/>
+  <rect x="253" y="292" width="28" height="6" fill="#0d0d0d" rx="2"/>
+
+  <!-- Person 2 - hoorn -->
+  <circle cx="300" cy="270" r="12" fill="#0d0d0d"/>
+  <rect x="291" y="281" width="18" height="48" fill="#0d0d0d" rx="2"/>
+  <circle cx="316" cy="278" r="18" fill="none" stroke="#0d0d0d" stroke-width="5"/>
+
+  <!-- Person 3 - dirigent (center, taller) -->
+  <circle cx="400" cy="260" r="13" fill="#0d0d0d"/>
+  <rect x="390" y="272" width="20" height="52" fill="#0d0d0d" rx="2"/>
+  <line x1="410" y1="272" x2="432" y2="255" stroke="#0d0d0d" stroke-width="3"/>
+  <line x1="390" y1="272" x2="368" y2="255" stroke="#0d0d0d" stroke-width="3"/>
+
+  <!-- Person 4 - trombone -->
+  <circle cx="470" cy="273" r="11" fill="#0d0d0d"/>
+  <rect x="462" y="283" width="16" height="46" fill="#0d0d0d" rx="2"/>
+  <rect x="472" y="290" width="40" height="5" fill="#0d0d0d" rx="2"/>
+  <rect x="487" y="286" width="5" height="13" fill="#0d0d0d"/>
+
+  <!-- Person 5 - tuba -->
+  <circle cx="530" cy="268" r="13" fill="#0d0d0d"/>
+  <rect x="521" y="280" width="20" height="50" fill="#0d0d0d" rx="2"/>
+  <circle cx="544" cy="268" r="20" fill="none" stroke="#0d0d0d" stroke-width="6"/>
+
+  <!-- Person 6 - drum -->
+  <circle cx="590" cy="275" r="11" fill="#0d0d0d"/>
+  <rect x="582" y="285" width="16" height="44" fill="#0d0d0d" rx="2"/>
+  <ellipse cx="591" cy="305" rx="22" ry="13" fill="none" stroke="#0d0d0d" stroke-width="4"/>
+
+  <!-- Bunting / flags -->
+  <polyline points="160,185 230,205 300,185 370,205 440,185 510,205 580,185 650,205 700,185" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+  <polygon points="230,205 245,222 260,205" fill="rgba(201,168,76,0.7)"/>
+  <polygon points="300,185 315,202 330,185" fill="rgba(139,26,47,0.7)"/>
+  <polygon points="370,205 385,222 400,205" fill="rgba(201,168,76,0.7)"/>
+  <polygon points="440,185 455,202 470,185" fill="rgba(139,26,47,0.7)"/>
+  <polygon points="510,205 525,222 540,205" fill="rgba(201,168,76,0.7)"/>
+  <polygon points="580,185 595,202 610,185" fill="rgba(139,26,47,0.7)"/>
+
+  <!-- Crowd -->
+  <g opacity="0.85">
+    <circle cx="215" cy="378" r="13" fill="#181208"/><rect x="203" y="390" width="24" height="32" fill="#181208" rx="2"/>
+    <circle cx="258" cy="372" r="12" fill="#201810"/><rect x="247" y="383" width="22" height="30" fill="#201810" rx="2"/>
+    <circle cx="298" cy="380" r="11" fill="#151010"/><rect x="288" y="390" width="20" height="28" fill="#151010" rx="2"/>
+    <circle cx="336" cy="374" r="13" fill="#1a1408"/><rect x="324" y="386" width="24" height="32" fill="#1a1408" rx="2"/>
+    <circle cx="378" cy="382" r="12" fill="#201810"/><rect x="367" y="393" width="22" height="28" fill="#201810" rx="2"/>
+    <circle cx="418" cy="375" r="11" fill="#181208"/><rect x="408" y="385" width="20" height="30" fill="#181208" rx="2"/>
+    <circle cx="458" cy="379" r="13" fill="#151010"/><rect x="446" y="391" width="24" height="28" fill="#151010" rx="2"/>
+    <circle cx="498" cy="373" r="12" fill="#1a1408"/><rect x="487" y="384" width="22" height="30" fill="#1a1408" rx="2"/>
+    <circle cx="538" cy="381" r="11" fill="#201810"/><rect x="528" y="391" width="20" height="28" fill="#201810" rx="2"/>
+    <circle cx="578" cy="376" r="12" fill="#181208"/><rect x="567" y="387" width="22" height="30" fill="#181208" rx="2"/>
+  </g>
+
+  <!-- Text overlay -->
+  <rect y="425" width="800" height="75" fill="rgba(0,0,0,0.72)"/>
+  <text x="400" y="461" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#c9a84c" letter-spacing="2">Koningsdag 2025</text>
+  <text x="400" y="483" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="rgba(255,255,255,0.65)" letter-spacing="1">27 APRIL · BENTELO</text>
+</svg>

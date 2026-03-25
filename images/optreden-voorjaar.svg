@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="hall-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080608"/>
+      <stop offset="100%" stop-color="#120e10"/>
+    </linearGradient>
+    <radialGradient id="stage-glow-v" cx="50%" cy="55%" r="40%">
+      <stop offset="0%" stop-color="rgba(201,168,76,0.22)"/>
+      <stop offset="70%" stop-color="rgba(201,168,76,0.06)"/>
+      <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Concert hall -->
+  <rect width="800" height="500" fill="url(#hall-bg)"/>
+  <rect width="800" height="500" fill="url(#stage-glow-v)"/>
+
+  <!-- Ornate ceiling -->
+  <rect x="0" y="0" width="800" height="55" fill="#0d0a0e"/>
+  <!-- Ceiling rosette -->
+  <circle cx="400" cy="28" r="20" fill="#1a141c"/>
+  <circle cx="400" cy="28" r="14" fill="#221820"/>
+  <circle cx="400" cy="28" r="8" fill="rgba(201,168,76,0.25)"/>
+  <!-- Ceiling molding -->
+  <rect x="0" y="52" width="800" height="4" fill="rgba(201,168,76,0.3)"/>
+
+  <!-- Balcony -->
+  <rect x="0" y="56" width="800" height="80" fill="#0f0c10"/>
+  <rect x="0" y="133" width="800" height="6" fill="rgba(201,168,76,0.35)"/>
+  <!-- Balcony railing balusters -->
+  <g fill="rgba(201,168,76,0.2)">
+    <rect x="40" y="60" width="3" height="70" rx="1"/>
+    <rect x="80" y="60" width="3" height="70" rx="1"/>
+    <rect x="120" y="60" width="3" height="70" rx="1"/>
+    <rect x="160" y="60" width="3" height="70" rx="1"/>
+    <rect x="200" y="60" width="3" height="70" rx="1"/>
+    <rect x="240" y="60" width="3" height="70" rx="1"/>
+    <rect x="280" y="60" width="3" height="70" rx="1"/>
+    <rect x="320" y="60" width="3" height="70" rx="1"/>
+    <rect x="360" y="60" width="3" height="70" rx="1"/>
+    <rect x="400" y="60" width="3" height="70" rx="1"/>
+    <rect x="440" y="60" width="3" height="70" rx="1"/>
+    <rect x="480" y="60" width="3" height="70" rx="1"/>
+    <rect x="520" y="60" width="3" height="70" rx="1"/>
+    <rect x="560" y="60" width="3" height="70" rx="1"/>
+    <rect x="600" y="60" width="3" height="70" rx="1"/>
+    <rect x="640" y="60" width="3" height="70" rx="1"/>
+    <rect x="680" y="60" width="3" height="70" rx="1"/>
+    <rect x="720" y="60" width="3" height="70" rx="1"/>
+    <rect x="760" y="60" width="3" height="70" rx="1"/>
+  </g>
+  <!-- Balcony audience silhouettes -->
+  <g opacity="0.6">
+    <circle cx="60" cy="72" r="8" fill="#1a141c"/>
+    <circle cx="100" cy="68" r="8" fill="#1e181e"/>
+    <circle cx="140" cy="74" r="8" fill="#1a141c"/>
+    <circle cx="180" cy="70" r="8" fill="#1e181e"/>
+    <circle cx="220" cy="72" r="8" fill="#1a141c"/>
+    <circle cx="260" cy="68" r="8" fill="#1e181e"/>
+    <circle cx="300" cy="74" r="8" fill="#1a141c"/>
+    <circle cx="340" cy="70" r="8" fill="#1e181e"/>
+    <circle cx="380" cy="72" r="8" fill="#1a141c"/>
+    <circle cx="420" cy="68" r="8" fill="#1e181e"/>
+    <circle cx="460" cy="74" r="8" fill="#1a141c"/>
+    <circle cx="500" cy="70" r="8" fill="#1e181e"/>
+    <circle cx="540" cy="72" r="8" fill="#1a141c"/>
+    <circle cx="580" cy="68" r="8" fill="#1e181e"/>
+    <circle cx="620" cy="74" r="8" fill="#1a141c"/>
+    <circle cx="660" cy="70" r="8" fill="#1e181e"/>
+    <circle cx="700" cy="72" r="8" fill="#1a141c"/>
+    <circle cx="740" cy="68" r="8" fill="#1e181e"/>
+  </g>
+
+  <!-- Stage curtains -->
+  <!-- Left curtain -->
+  <path d="M 0,139 Q 15,200 0,280 Q 20,340 0,400 L 130,400 L 130,139 Z" fill="#1a0a0a"/>
+  <path d="M 65,139 Q 48,210 65,280 Q 48,340 65,400" fill="none" stroke="rgba(30,0,0,0.6)" stroke-width="4"/>
+  <path d="M 98,139 Q 80,220 98,290 Q 80,355 98,400" fill="none" stroke="rgba(30,0,0,0.5)" stroke-width="3"/>
+  <!-- Curtain gold hem -->
+  <line x1="130" y1="139" x2="130" y2="400" stroke="rgba(201,168,76,0.45)" stroke-width="2.5"/>
+  <line x1="0" y1="139" x2="800" y2="139" stroke="rgba(201,168,76,0.45)" stroke-width="3"/>
+
+  <!-- Right curtain -->
+  <path d="M 800,139 Q 785,200 800,280 Q 780,340 800,400 L 670,400 L 670,139 Z" fill="#1a0a0a"/>
+  <path d="M 735,139 Q 752,210 735,280 Q 752,340 735,400" fill="none" stroke="rgba(30,0,0,0.6)" stroke-width="4"/>
+  <path d="M 702,139 Q 720,220 702,290 Q 720,355 702,400" fill="none" stroke="rgba(30,0,0,0.5)" stroke-width="3"/>
+  <line x1="670" y1="139" x2="670" y2="400" stroke="rgba(201,168,76,0.45)" stroke-width="2.5"/>
+
+  <!-- Stage floor -->
+  <rect x="130" y="340" width="540" height="70" fill="#100c0e"/>
+  <!-- Stage edge lighting strip -->
+  <rect x="130" y="338" width="540" height="5" fill="rgba(201,168,76,0.5)" rx="1"/>
+  <!-- Stage footlights -->
+  <ellipse cx="220" cy="343" rx="20" ry="7" fill="rgba(255,230,120,0.22)"/>
+  <ellipse cx="320" cy="343" rx="20" ry="7" fill="rgba(255,230,120,0.22)"/>
+  <ellipse cx="400" cy="343" rx="20" ry="7" fill="rgba(255,240,140,0.28)"/>
+  <ellipse cx="480" cy="343" rx="20" ry="7" fill="rgba(255,230,120,0.22)"/>
+  <ellipse cx="580" cy="343" rx="20" ry="7" fill="rgba(255,230,120,0.22)"/>
+
+  <!-- Multiple spotlights from above -->
+  <polygon points="220,139 185,342 255,342" fill="rgba(255,220,100,0.07)"/>
+  <polygon points="320,139 285,342 355,342" fill="rgba(255,220,100,0.07)"/>
+  <polygon points="400,139 370,342 430,342" fill="rgba(255,230,120,0.10)"/>
+  <polygon points="480,139 445,342 515,342" fill="rgba(255,220,100,0.07)"/>
+  <polygon points="580,139 545,342 615,342" fill="rgba(255,220,100,0.07)"/>
+
+  <!-- Full orchestra - multiple rows -->
+  <!-- Front row (left to right) -->
+  <circle cx="195" cy="312" r="10" fill="#100c0e"/><rect x="187" y="321" width="16" height="22" fill="#100c0e" rx="1"/>
+  <circle cx="230" cy="308" r="10" fill="#0e0a10"/><rect x="222" y="317" width="16" height="24" fill="#0e0a10" rx="1"/>
+  <circle cx="268" cy="312" r="10" fill="#100c0e"/><rect x="260" y="321" width="16" height="22" fill="#100c0e" rx="1"/>
+  <circle cx="305" cy="308" r="10" fill="#0e0a10"/><rect x="297" y="317" width="16" height="24" fill="#0e0a10" rx="1"/>
+  <circle cx="342" cy="312" r="10" fill="#100c0e"/><rect x="334" y="321" width="16" height="22" fill="#100c0e" rx="1"/>
+
+  <!-- Dirigent (center) -->
+  <circle cx="400" cy="295" r="13" fill="#100c0e"/>
+  <rect x="391" y="307" width="18" height="32" fill="#100c0e" rx="1"/>
+  <line x1="409" y1="307" x2="426" y2="295" stroke="#100c0e" stroke-width="3"/>
+  <line x1="391" y1="307" x2="374" y2="295" stroke="#100c0e" stroke-width="3"/>
+
+  <circle cx="458" cy="312" r="10" fill="#100c0e"/><rect x="450" y="321" width="16" height="22" fill="#100c0e" rx="1"/>
+  <circle cx="495" cy="308" r="10" fill="#0e0a10"/><rect x="487" y="317" width="16" height="24" fill="#0e0a10" rx="1"/>
+  <circle cx="532" cy="312" r="10" fill="#100c0e"/><rect x="524" y="321" width="16" height="22" fill="#100c0e" rx="1"/>
+  <circle cx="568" cy="308" r="10" fill="#0e0a10"/><rect x="560" y="317" width="16" height="24" fill="#0e0a10" rx="1"/>
+  <circle cx="605" cy="312" r="10" fill="#100c0e"/><rect x="597" y="321" width="16" height="22" fill="#100c0e" rx="1"/>
+
+  <!-- Back row (brass) -->
+  <circle cx="210" cy="282" r="9" fill="#0e0a0e"/><rect x="203" y="290" width="14" height="20" fill="#0e0a0e" rx="1"/>
+  <circle cx="248" cy="278" r="9" fill="#0d0a0e"/><rect x="241" y="286" width="14" height="22" fill="#0d0a0e" rx="1"/>
+  <circle cx="290" cy="282" r="9" fill="#0e0a0e"/><rect x="283" y="290" width="14" height="20" fill="#0e0a0e" rx="1"/>
+  <circle cx="334" cy="278" r="9" fill="#0d0a0e"/><rect x="327" y="286" width="14" height="22" fill="#0d0a0e" rx="1"/>
+  <circle cx="466" cy="282" r="9" fill="#0e0a0e"/><rect x="459" y="290" width="14" height="20" fill="#0e0a0e" rx="1"/>
+  <circle cx="508" cy="278" r="9" fill="#0d0a0e"/><rect x="501" y="286" width="14" height="22" fill="#0d0a0e" rx="1"/>
+  <circle cx="550" cy="282" r="9" fill="#0e0a0e"/><rect x="543" y="290" width="14" height="20" fill="#0e0a0e" rx="1"/>
+  <circle cx="590" cy="278" r="9" fill="#0d0a0e"/>
+  <!-- Tuba back right -->
+  <circle cx="630" cy="280" r="11" fill="#0e0a0e"/>
+  <circle cx="646" cy="272" r="17" fill="none" stroke="#0e0a0e" stroke-width="5"/>
+
+  <!-- Ground floor audience -->
+  <g opacity="0.65">
+    <circle cx="155" cy="395" r="11" fill="#110d10"/>
+    <circle cx="190" cy="390" r="11" fill="#150f12"/>
+    <circle cx="225" cy="395" r="10" fill="#110d10"/>
+    <circle cx="260" cy="390" r="11" fill="#150f12"/>
+    <circle cx="295" cy="395" r="10" fill="#110d10"/>
+    <circle cx="330" cy="390" r="11" fill="#150f12"/>
+    <circle cx="370" cy="395" r="10" fill="#110d10"/>
+    <circle cx="410" cy="390" r="11" fill="#150f12"/>
+    <circle cx="450" cy="395" r="10" fill="#110d10"/>
+    <circle cx="490" cy="390" r="11" fill="#150f12"/>
+    <circle cx="530" cy="395" r="10" fill="#110d10"/>
+    <circle cx="570" cy="390" r="11" fill="#150f12"/>
+    <circle cx="610" cy="395" r="10" fill="#110d10"/>
+    <circle cx="645" cy="390" r="11" fill="#150f12"/>
+  </g>
+
+  <!-- Text overlay -->
+  <rect y="425" width="800" height="75" fill="rgba(0,0,0,0.78)"/>
+  <text x="400" y="461" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#c9a84c" letter-spacing="2">Voorjaarsconcert 2025</text>
+  <text x="400" y="483" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="rgba(255,255,255,0.65)" letter-spacing="1">17 MEI · KULTURHUS DE BULT</text>
+</svg>

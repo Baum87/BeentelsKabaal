@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <radialGradient id="spot-b" cx="50%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="rgba(255,220,120,0.65)"/>
+      <stop offset="50%" stop-color="rgba(220,160,60,0.25)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+    <radialGradient id="floor-glow" cx="50%" cy="100%" r="35%">
+      <stop offset="0%" stop-color="rgba(201,168,76,0.18)"/>
+      <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Dark concert hall -->
+  <rect width="800" height="500" fill="#060404"/>
+
+  <!-- Subtle wood paneling suggestion on walls -->
+  <rect x="0" y="0" width="90" height="500" fill="#0a0806"/>
+  <rect x="710" y="0" width="90" height="500" fill="#0a0806"/>
+  <!-- Panel lines -->
+  <line x1="30" y1="0" x2="30" y2="500" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="60" y1="0" x2="60" y2="500" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="740" y1="0" x2="740" y2="500" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="770" y1="0" x2="770" y2="500" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+  <!-- Curtain left -->
+  <path d="M 0,0 Q 20,100 0,200 Q 30,300 0,400 Q 15,450 0,500 L 100,500 L 110,0 Z" fill="#1a0808" opacity="0.9"/>
+  <!-- Curtain folds left -->
+  <path d="M 55,0 Q 35,120 55,240 Q 35,360 55,500" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="3"/>
+  <path d="M 80,0 Q 60,130 80,260 Q 60,380 80,500" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="2"/>
+
+  <!-- Curtain right -->
+  <path d="M 800,0 Q 780,100 800,200 Q 770,300 800,400 Q 785,450 800,500 L 700,500 L 690,0 Z" fill="#1a0808" opacity="0.9"/>
+  <!-- Curtain folds right -->
+  <path d="M 745,0 Q 765,120 745,240 Q 765,360 745,500" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="3"/>
+  <path d="M 720,0 Q 740,130 720,260 Q 740,380 720,500" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="2"/>
+
+  <!-- Curtain gold trim -->
+  <line x1="110" y1="0" x2="110" y2="500" stroke="rgba(201,168,76,0.35)" stroke-width="2"/>
+  <line x1="690" y1="0" x2="690" y2="500" stroke="rgba(201,168,76,0.35)" stroke-width="2"/>
+
+  <!-- Stage floor -->
+  <rect y="370" width="800" height="130" fill="#0d0904"/>
+  <!-- Floor reflection -->
+  <rect y="370" width="800" height="130" fill="url(#floor-glow)"/>
+  <!-- Floor boards -->
+  <line x1="0" y1="390" x2="800" y2="390" stroke="rgba(100,70,20,0.12)" stroke-width="1.5"/>
+  <line x1="0" y1="410" x2="800" y2="410" stroke="rgba(100,70,20,0.12)" stroke-width="1.5"/>
+  <line x1="0" y1="430" x2="800" y2="430" stroke="rgba(100,70,20,0.12)" stroke-width="1.5"/>
+  <line x1="0" y1="450" x2="800" y2="450" stroke="rgba(100,70,20,0.12)" stroke-width="1.5"/>
+
+  <!-- Main spotlight beam -->
+  <polygon points="400,0 330,380 470,380" fill="rgba(255,220,120,0.08)"/>
+  <!-- Secondary soft light -->
+  <polygon points="400,0 355,380 445,380" fill="rgba(255,220,120,0.06)"/>
+
+  <!-- Spotlight glow -->
+  <rect width="800" height="500" fill="url(#spot-b)"/>
+
+  <!-- Spotlight circle on floor -->
+  <ellipse cx="400" cy="375" rx="72" ry="22" fill="rgba(255,210,100,0.22)"/>
+  <ellipse cx="400" cy="375" rx="45" ry="14" fill="rgba(255,220,120,0.30)"/>
+
+  <!-- Microphone stand -->
+  <line x1="400" y1="310" x2="400" y2="370" stroke="#333" stroke-width="3"/>
+  <line x1="380" y1="370" x2="420" y2="370" stroke="#333" stroke-width="3"/><!-- base -->
+  <ellipse cx="400" cy="308" rx="8" ry="10" fill="#222"/>
+
+  <!-- Solo musician (more detailed in spotlight) -->
+  <circle cx="400" cy="282" r="16" fill="#1a1208"/><!-- head -->
+  <!-- Hair highlight in spotlight -->
+  <ellipse cx="400" cy="274" rx="14" ry="8" fill="rgba(201,168,76,0.15)"/>
+  <!-- Body -->
+  <rect x="386" y="297" width="28" height="58" fill="#0d0a06" rx="2"/>
+  <!-- Arms holding instrument (trumpet) -->
+  <rect x="414" y="308" width="34" height="7" fill="#0d0a06" rx="3"/>
+  <line x1="386" y1="308" x2="362" y2="320" stroke="#0d0a06" stroke-width="7"/>
+
+  <!-- Sheet music stand (barely visible) -->
+  <rect x="330" y="315" width="3" height="58" fill="#1a1a1a"/>
+  <rect x="320" y="308" width="24" height="18" fill="#111" rx="1"/><!-- paper -->
+
+  <!-- Audience silhouettes very dark -->
+  <g opacity="0.55">
+    <circle cx="145" cy="430" r="14" fill="#100c08"/>
+    <circle cx="185" cy="422" r="13" fill="#140e08"/>
+    <circle cx="225" cy="428" r="14" fill="#100c08"/>
+    <circle cx="265" cy="420" r="13" fill="#140e08"/>
+    <circle cx="305" cy="426" r="14" fill="#100c08"/>
+    <!-- right side audience -->
+    <circle cx="495" cy="426" r="14" fill="#100c08"/>
+    <circle cx="535" cy="420" r="13" fill="#140e08"/>
+    <circle cx="575" cy="428" r="14" fill="#100c08"/>
+    <circle cx="615" cy="422" r="13" fill="#140e08"/>
+    <circle cx="655" cy="428" r="14" fill="#100c08"/>
+  </g>
+
+  <!-- Text overlay -->
+  <rect y="425" width="800" height="75" fill="rgba(0,0,0,0.80)"/>
+  <text x="400" y="461" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#c9a84c" letter-spacing="2">Benefietconcert 2025</text>
+  <text x="400" y="483" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="rgba(255,255,255,0.65)" letter-spacing="1">13 SEPTEMBER · DORPSKERK GOOR</text>
+</svg>
