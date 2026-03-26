@@ -152,6 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const isHoofd = item.hoofd ? 'highlight' : '';
     const btnKlasse = item.hoofd ? '' : 'btn-outline-dark';
     const labelHtml = item.label ? `<span class="tag tag-red">${item.label}</span>` : '';
+    const tijdHtml = item.tijdstip ? `<span class="agenda-time">🕑 ${item.tijdstip}</span>` : '';
+    const beschrijvingHtml = item.beschrijving ? `<p>${item.beschrijving}</p>` : '';
     return `
     <div class="agenda-item ${isHoofd}">
       <div class="agenda-date-block">
@@ -164,10 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="agenda-location">📍 ${item.locatie}</span>
         </div>
         <h3>${item.titel}</h3>
-        <p>${item.beschrijving}</p>
-        <span class="agenda-time">🕑 ${item.tijdstip}</span>
+        ${beschrijvingHtml}
+        ${tijdHtml}
       </div>
-      <a href="#contact" class="btn btn-small ${btnKlasse}">${item.knoptekst || 'Meer info'}</a>
     </div>`;
   }
 
@@ -218,7 +219,24 @@ document.addEventListener('DOMContentLoaded', () => {
     </a>`;
   }
 
+  // ─── Over ons afbeeldingen laden ─────────────────────────────────────
+  async function laadOverOns() {
+    try {
+      const res = await fetch('/content/over-ons.json');
+      const data = await res.json();
+      if (data.afbeelding_groot) {
+        const el = document.getElementById('overOnsGroot');
+        if (el) el.innerHTML = `<img src="${data.afbeelding_groot}" alt="Fanfare in actie" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" />`;
+      }
+      if (data.afbeelding_klein) {
+        const el = document.getElementById('overOnsKlein');
+        if (el) el.innerHTML = `<img src="${data.afbeelding_klein}" alt="Beentels Kabaal" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" />`;
+      }
+    } catch (e) { /* placeholders blijven zichtbaar */ }
+  }
+
   laadAgenda();
   laadEvenementen();
+  laadOverOns();
 
 });

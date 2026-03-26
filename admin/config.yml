@@ -36,6 +36,7 @@ collections:
               - name: tijdstip
                 label: Tijdstip
                 widget: string
+                required: false
                 hint: "bijv: 13:00 – 17:00 uur"
               - name: locatie
                 label: Locatie
@@ -43,19 +44,35 @@ collections:
               - name: beschrijving
                 label: Beschrijving
                 widget: text
+                required: false
               - name: label
                 label: Label
                 widget: string
                 required: false
                 hint: "bijv: Bijna vol"
-              - name: knoptekst
-                label: Knoptekst
-                widget: string
-                default: "Meer info"
               - name: hoofd
                 label: Uitlichten als hoofdevenement
                 widget: boolean
                 default: false
+
+  - name: over_ons
+    label: Over ons
+    files:
+      - name: over_ons
+        label: Afbeeldingen
+        file: content/over-ons.json
+        format: json
+        fields:
+          - name: afbeelding_groot
+            label: Grote afbeelding
+            widget: image
+            required: false
+            hint: "Hoofdfoto rechts naast de tekst"
+          - name: afbeelding_klein
+            label: Kleine afbeelding
+            widget: image
+            required: false
+            hint: "Kleine foto rechtsonder"
 
   - name: evenementen
     label: Evenementen

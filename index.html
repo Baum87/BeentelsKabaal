@@ -109,12 +109,12 @@
         </div>
       </div>
       <div class="image-block">
-        <div class="img-placeholder large">
+        <div class="img-placeholder large" id="overOnsGroot">
           <div class="img-icon">🎺</div>
           <p>Fanfare in actie</p>
         </div>
         <div class="img-accent">
-          <div class="img-placeholder small">
+          <div class="img-placeholder small" id="overOnsKlein">
             <div class="img-icon">🏆</div>
             <p>Winnaars 2024</p>
           </div>
@@ -240,18 +240,20 @@
       </div>
 
       <div class="form-block">
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" name="contact" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none"><input name="bot-field" /></p>
           <div class="form-group">
             <label for="name">Naam</label>
-            <input type="text" id="name" placeholder="Jan Jansen" />
+            <input type="text" id="name" name="naam" placeholder="Jan Jansen" required />
           </div>
           <div class="form-group">
             <label for="email">E-mailadres</label>
-            <input type="email" id="email" placeholder="jan@email.nl" />
+            <input type="email" id="email" name="email" placeholder="jan@email.nl" required />
           </div>
           <div class="form-group">
             <label for="onderwerp">Onderwerp</label>
-            <select id="onderwerp">
+            <select id="onderwerp" name="onderwerp">
               <option value="">Kies een onderwerp...</option>
               <option>Ik wil jullie boeken voor een evenement</option>
               <option>Ik wil lid worden</option>
@@ -262,7 +264,7 @@
           </div>
           <div class="form-group">
             <label for="bericht">Bericht</label>
-            <textarea id="bericht" rows="5" placeholder="Vertel ons meer..."></textarea>
+            <textarea id="bericht" name="bericht" rows="5" placeholder="Vertel ons meer..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary full-width">Verstuur bericht →</button>
           <p class="form-note">We reageren binnen 2 werkdagen.</p>

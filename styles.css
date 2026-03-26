@@ -238,7 +238,13 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-title span { display: block; }
-.hero-title .gold { color: var(--gold); }
+.hero-title .gold {
+  color: var(--gold);
+  text-shadow:
+    0 0 40px rgba(201,168,76,0.55),
+    0 0 80px rgba(201,168,76,0.30),
+    0 0 140px rgba(201,168,76,0.15);
+}
 
 .hero-desc {
   font-size: clamp(1rem, 2.2vw, 1.2rem);
