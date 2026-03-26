@@ -1,59 +1,59 @@
 {
   "items": [
     {
-      "id": "koningsdag-2026",
       "titel": "Koningsdagconcert",
-      "datum": "2026-04-27",
-      "tijdstip": "13:00 – 17:00 uur",
-      "locatie": "Marktplein, Bentelo",
+      "hoofd": false,
       "beschrijving": "Gratis openluchtconcert op het marktplein van Bentelo. Meezingen toegestaan — en zelfs aangemoedigd.",
+      "datum": "2026-04-27",
+      "locatie": "Marktplein, Bentelo",
       "label": "Bijna vol",
+      "tijdstip": "13:00 – 17:00 uur",
       "knoptekst": "Aanmelden",
-      "hoofd": true
+      "id": "koningsdag-2026"
     },
     {
-      "id": "voorjaar-2026",
       "titel": "Voorjaarsconcert",
-      "datum": "2026-05-17",
-      "tijdstip": "20:00 – 22:30 uur",
-      "locatie": "Kulturhus De Bult, Bentelo",
+      "hoofd": false,
       "beschrijving": "Ons grote voorjaarsconcert met premières uit ons nieuwe repertoire. Kaarten beschikbaar aan de deur.",
+      "datum": "2026-05-17",
+      "locatie": "Kulturhus De Bult, Bentelo",
       "label": "",
+      "tijdstip": "20:00 – 22:30 uur",
       "knoptekst": "Kaarten",
-      "hoofd": false
+      "id": "voorjaar-2026"
     },
     {
-      "id": "zomerfestival-2026",
       "titel": "Zomerfestival Twente",
-      "datum": "2026-07-05",
-      "tijdstip": "Zaterdag 15:00 – 23:00 uur",
-      "locatie": "Erve 't Oude Erf, buitenlocatie",
+      "hoofd": false,
       "beschrijving": "Twee dagen muziek, bier en gezelligheid op een prachtige boerenerflocatie in het Twentse landschap.",
+      "datum": "2026-07-05",
+      "locatie": "Erve 't Oude Erf, buitenlocatie",
       "label": "",
+      "tijdstip": "Zaterdag 15:00 – 23:00 uur",
       "knoptekst": "Meer info",
-      "hoofd": false
+      "id": "zomerfestival-2026"
     },
     {
-      "id": "benefiet-2026",
       "titel": "Benefietconcert voor Voedselbank",
-      "datum": "2026-09-13",
-      "tijdstip": "19:30 – 21:30 uur",
-      "locatie": "Dorpskerk Goor",
+      "hoofd": false,
       "beschrijving": "Muziek voor een goed doel. Toegang op donatie — elke euro gaat naar de plaatselijke voedselbank.",
+      "datum": "2026-09-13",
+      "locatie": "Dorpskerk Goor",
       "label": "",
+      "tijdstip": "19:30 – 21:30 uur",
       "knoptekst": "Doneer",
-      "hoofd": false
+      "id": "benefiet-2026"
     },
     {
-      "id": "sinterklaas-2026",
       "titel": "Sinterklaascorso",
-      "datum": "2026-12-07",
-      "tijdstip": "14:00 – 17:00 uur",
-      "locatie": "Diverse locaties, Bentelo",
+      "hoofd": false,
       "beschrijving": "Jaarlijkse optocht door het centrum van Bentelo. Warme chocolademelk en speculaas gegarandeerd.",
+      "datum": "2026-12-07",
+      "locatie": "Diverse locaties, Bentelo",
       "label": "",
+      "tijdstip": "14:00 – 17:00 uur",
       "knoptekst": "Meer info",
-      "hoofd": false
+      "id": "sinterklaas-2026"
     }
   ]
 }
