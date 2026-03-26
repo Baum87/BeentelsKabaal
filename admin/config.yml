@@ -5,8 +5,8 @@ backend:
 media_library:
   name: cloudinary
   config:
-    cloud_name: JOUW_CLOUD_NAME
-    api_key: JOUW_API_KEY
+    cloud_name: dbrzjelnu
+    api_key: 292635717597455
 
 locale: nl
 
