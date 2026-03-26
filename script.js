@@ -93,13 +93,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll(
+  function applyFadeIn(elements) {
+    elements.forEach((el, i) => {
+      el.classList.add('fade-in');
+      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+      observer.observe(el);
+    });
+  }
+
+  applyFadeIn(document.querySelectorAll(
     '.text-block, .image-block, .agenda-item, .optreden-card, .stat, .contact-details, .form-block'
-  ).forEach((el, i) => {
-    el.classList.add('fade-in');
-    el.style.transitionDelay = `${(i % 4) * 0.08}s`;
-    observer.observe(el);
-  });
+  ));
 
   // ─── Contact formulier ───────────────────────────────────────────────────
   const form = document.getElementById('contactForm');
@@ -109,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = form.querySelector('button[type="submit"]');
       const original = btn.textContent;
       btn.textContent = '✓ Bericht ontvangen!';
-      btn.style.background = '#2d6a1a';
+      btn.style.background = 'var(--bordeaux)';
       btn.disabled = true;
       setTimeout(() => {
         btn.textContent = original;
@@ -133,12 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       container.innerHTML = items.map(renderAgendaItem).join('');
-      // Fade-in opnieuw activeren voor nieuw gegenereerde elementen
-      container.querySelectorAll('.agenda-item').forEach((el, i) => {
-        el.classList.add('fade-in');
-        el.style.transitionDelay = `${(i % 4) * 0.08}s`;
-        observer.observe(el);
-      });
+      applyFadeIn(container.querySelectorAll('.agenda-item'));
     } catch (e) {
       container.innerHTML = '<p class="loading-tekst">Agenda kon niet worden geladen.</p>';
     }
@@ -185,11 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       container.innerHTML = items.map(renderEvenementCard).join('');
-      container.querySelectorAll('.optreden-card').forEach((el, i) => {
-        el.classList.add('fade-in');
-        el.style.transitionDelay = `${(i % 4) * 0.08}s`;
-        observer.observe(el);
-      });
+      applyFadeIn(container.querySelectorAll('.optreden-card'));
     } catch (e) {
       container.innerHTML = '<p class="loading-tekst">Evenementen konden niet worden geladen.</p>';
     }
@@ -199,7 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const d = new Date(item.datum);
     const dagNaam = d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
     const aantalFotos = item.fotos ? item.fotos.length : 0;
-    const fotoTekst = aantalFotos > 0 ? `${aantalFotos} foto's →` : 'Foto\'s volgen binnenkort';
+    const fotoTekst = aantalFotos > 0
+      ? `<span class="optreden-count">${aantalFotos} foto's →</span>`
+      : `<span class="optreden-count muted">Foto's volgen binnenkort</span>`;
     const img = item.omslagfoto || '/images/optreden-placeholder.svg';
     return `
     <a href="optredens/evenement.html?id=${item.id}" class="optreden-card">
@@ -214,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="optreden-date">${dagNaam}</span>
         <h3>${item.titel}</h3>
         <p>${item.locatie}</p>
-        <span class="optreden-count">${fotoTekst}</span>
+        ${fotoTekst}
       </div>
     </a>`;
   }
