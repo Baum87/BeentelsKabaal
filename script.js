@@ -120,4 +120,105 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ─── Agenda laden uit JSON ────────────────────────────────────────────
+  async function laadAgenda() {
+    const container = document.getElementById('agendaList');
+    if (!container) return;
+    try {
+      const res = await fetch('/content/agenda.json');
+      const data = await res.json();
+      const items = (data.items || []).sort((a, b) => a.datum.localeCompare(b.datum));
+      if (items.length === 0) {
+        container.innerHTML = '<p class="loading-tekst">Geen aankomende evenementen.</p>';
+        return;
+      }
+      container.innerHTML = items.map(renderAgendaItem).join('');
+      // Fade-in opnieuw activeren voor nieuw gegenereerde elementen
+      container.querySelectorAll('.agenda-item').forEach((el, i) => {
+        el.classList.add('fade-in');
+        el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+        observer.observe(el);
+      });
+    } catch (e) {
+      container.innerHTML = '<p class="loading-tekst">Agenda kon niet worden geladen.</p>';
+    }
+  }
+
+  function renderAgendaItem(item) {
+    const d = new Date(item.datum);
+    const dag = String(d.getDate()).padStart(2, '0');
+    const maanden = ['JAN','FEB','MRT','APR','MEI','JUN','JUL','AUG','SEP','OKT','NOV','DEC'];
+    const maand = maanden[d.getMonth()];
+    const isHoofd = item.hoofd ? 'highlight' : '';
+    const btnKlasse = item.hoofd ? '' : 'btn-outline-dark';
+    const labelHtml = item.label ? `<span class="tag tag-red">${item.label}</span>` : '';
+    return `
+    <div class="agenda-item ${isHoofd}">
+      <div class="agenda-date-block">
+        <span class="a-day">${dag}</span>
+        <span class="a-month">${maand}</span>
+      </div>
+      <div class="agenda-body">
+        <div class="agenda-meta">
+          ${labelHtml}
+          <span class="agenda-location">📍 ${item.locatie}</span>
+        </div>
+        <h3>${item.titel}</h3>
+        <p>${item.beschrijving}</p>
+        <span class="agenda-time">🕑 ${item.tijdstip}</span>
+      </div>
+      <a href="#contact" class="btn btn-small ${btnKlasse}">${item.knoptekst || 'Meer info'}</a>
+    </div>`;
+  }
+
+  // ─── Evenementen laden uit JSON ───────────────────────────────────────
+  async function laadEvenementen() {
+    const container = document.getElementById('optredensGrid');
+    if (!container) return;
+    try {
+      const res = await fetch('/content/evenementen.json');
+      const data = await res.json();
+      const items = (data.items || []).sort((a, b) => b.datum.localeCompare(a.datum));
+      if (items.length === 0) {
+        container.innerHTML = '<p class="loading-tekst">Nog geen evenementen.</p>';
+        return;
+      }
+      container.innerHTML = items.map(renderEvenementCard).join('');
+      container.querySelectorAll('.optreden-card').forEach((el, i) => {
+        el.classList.add('fade-in');
+        el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+        observer.observe(el);
+      });
+    } catch (e) {
+      container.innerHTML = '<p class="loading-tekst">Evenementen konden niet worden geladen.</p>';
+    }
+  }
+
+  function renderEvenementCard(item) {
+    const d = new Date(item.datum);
+    const dagNaam = d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+    const aantalFotos = item.fotos ? item.fotos.length : 0;
+    const fotoTekst = aantalFotos > 0 ? `${aantalFotos} foto's →` : 'Foto\'s volgen binnenkort';
+    const img = item.omslagfoto || '/images/optreden-placeholder.svg';
+    return `
+    <a href="optredens/evenement.html?id=${item.id}" class="optreden-card">
+      <div class="optreden-img-wrap">
+        <img src="${img}" alt="${item.titel}" />
+        <div class="optreden-overlay">
+          <span class="overlay-icon">🖼</span>
+          <span class="overlay-text">Bekijk foto's</span>
+        </div>
+      </div>
+      <div class="optreden-info">
+        <span class="optreden-date">${dagNaam}</span>
+        <h3>${item.titel}</h3>
+        <p>${item.locatie}</p>
+        <span class="optreden-count">${fotoTekst}</span>
+      </div>
+    </a>`;
+  }
+
+  laadAgenda();
+  laadEvenementen();
+
 });

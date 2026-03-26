@@ -1,0 +1,102 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: JOUW_CLOUD_NAME
+    api_key: JOUW_API_KEY
+
+locale: nl
+
+collections:
+  - name: agenda
+    label: Agenda
+    files:
+      - name: agenda
+        label: Agenda items
+        file: content/agenda.json
+        format: json
+        fields:
+          - name: items
+            label: Agenda items
+            widget: list
+            fields:
+              - name: id
+                label: ID
+                widget: string
+              - name: titel
+                label: Titel
+                widget: string
+              - name: datum
+                label: Datum
+                widget: string
+                hint: "Formaat: YYYY-MM-DD"
+              - name: tijdstip
+                label: Tijdstip
+                widget: string
+                hint: "bijv: 13:00 – 17:00 uur"
+              - name: locatie
+                label: Locatie
+                widget: string
+              - name: beschrijving
+                label: Beschrijving
+                widget: text
+              - name: label
+                label: Label
+                widget: string
+                required: false
+                hint: "bijv: Bijna vol"
+              - name: knoptekst
+                label: Knoptekst
+                widget: string
+                default: "Meer info"
+              - name: hoofd
+                label: Uitlichten als hoofdevenement
+                widget: boolean
+                default: false
+
+  - name: evenementen
+    label: Evenementen
+    files:
+      - name: evenementen
+        label: Evenementen
+        file: content/evenementen.json
+        format: json
+        fields:
+          - name: items
+            label: Evenementen
+            widget: list
+            fields:
+              - name: id
+                label: ID
+                widget: string
+                hint: "Unieke code zonder spaties, bijv: koningsdag-2026"
+              - name: titel
+                label: Titel
+                widget: string
+              - name: datum
+                label: Datum
+                widget: string
+                hint: "Formaat: YYYY-MM-DD"
+              - name: locatie
+                label: Locatie
+                widget: string
+              - name: beschrijving
+                label: Beschrijving
+                widget: text
+              - name: omslagfoto
+                label: Omslagfoto
+                widget: image
+              - name: fotos
+                label: Foto's
+                widget: list
+                fields:
+                  - name: afbeelding
+                    label: Afbeelding
+                    widget: image
+                  - name: bijschrift
+                    label: Bijschrift
+                    widget: string
+                    required: false

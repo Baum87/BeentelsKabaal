@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evenement – Beentels Kabaal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="optreden.css" />
+  <style>
+    .loading-tekst {
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+      padding: 48px 0;
+    }
+    .error-block {
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .error-block h2 {
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .error-block p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+    }
+    .error-block a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.04em;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 8px 18px;
+      border-radius: 50px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    .error-block a:hover { color: var(--gold); border-color: rgba(201,168,76,0.4); }
+    .geen-fotos {
+      text-align: center;
+      color: rgba(255,255,255,0.44);
+      font-size: 0.95rem;
+      padding: 48px 0;
+    }
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      color: rgba(255,255,255,0.88);
+      font-size: 0.78rem;
+      padding: 24px 12px 10px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .photo-cell:hover .photo-caption { opacity: 1; }
+    /* Lightbox caption */
+    .lightbox-caption {
+      text-align: center;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.85rem;
+      margin-top: 10px;
+      min-height: 1.2em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATIE -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">♩</span>
+        <span class="logo-text">Beentels Kabaal</span>
+      </a>
+      <a href="../index.html#optredens" class="back-link">← Terug naar optredens</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero" id="pageHero">
+    <div class="page-hero-content">
+      <span class="page-eyebrow" id="heroEyebrow">Evenement</span>
+      <h1 id="heroTitel">Laden…</h1>
+      <div class="page-meta" id="pageMeta"></div>
+    </div>
+  </section>
+
+  <!-- FOTO SECTIE -->
+  <section class="photo-section">
+    <div class="photo-grid" id="photoGrid">
+      <p class="loading-tekst">Foto's worden geladen…</p>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto vergroten">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Sluiten">✕</button>
+      <img id="lightboxImg" src="" alt="" />
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+      <div class="lightbox-nav">
+        <button class="lightbox-btn" id="lightboxPrev">← Vorige</button>
+        <span class="lightbox-counter" id="lightboxCounter"></span>
+        <button class="lightbox-btn" id="lightboxNext">Volgende →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Beentels Kabaal · Fanfare uit het hart van Twente</p>
+    </div>
+  </footer>
+
+  <script>
+    (async function () {
+      // ─── Haal id uit URL ─────────────────────────────────────────────────
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+
+      const photoGrid  = document.getElementById('photoGrid');
+      const heroTitel  = document.getElementById('heroTitel');
+      const heroEyebrow = document.getElementById('heroEyebrow');
+      const pageMeta   = document.getElementById('pageMeta');
+
+      function toonFout(bericht) {
+        document.querySelector('.page-hero').style.display = 'none';
+        photoGrid.closest('.photo-section').innerHTML = `
+          <div class="error-block">
+            <h2>Evenement niet gevonden</h2>
+            <p>${bericht}</p>
+            <a href="../index.html#optredens">← Terug naar optredens</a>
+          </div>`;
+      }
+
+      if (!id) {
+        toonFout('Er is geen evenement-id opgegeven.');
+        return;
+      }
+
+      // ─── Laad evenementen.json ────────────────────────────────────────────
+      let evenement;
+      try {
+        const res = await fetch('/content/evenementen.json');
+        if (!res.ok) throw new Error('Kon evenementen.json niet laden.');
+        const data = await res.json();
+        evenement = (data.items || []).find(item => item.id === id);
+      } catch (e) {
+        toonFout('De evenementenlijst kon niet worden geladen.');
+        return;
+      }
+
+      if (!evenement) {
+        toonFout(`Geen evenement gevonden met id "<strong>${id}</strong>".`);
+        return;
+      }
+
+      // ─── Vul hero in ─────────────────────────────────────────────────────
+      document.title = `${evenement.titel} – Beentels Kabaal`;
+
+      const datum = new Date(evenement.datum);
+      const datumTekst = datum.toLocaleDateString('nl-NL', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+      });
+      // Capitalize eerste letter
+      const datumNetjes = datumTekst.charAt(0).toUpperCase() + datumTekst.slice(1);
+
+      heroEyebrow.textContent = datumNetjes;
+      heroTitel.textContent = evenement.titel;
+
+      const metaItems = [];
+      if (evenement.locatie) {
+        metaItems.push(`<span>📍 ${evenement.locatie}</span>`);
+      }
+      if (evenement.tijdstip) {
+        metaItems.push(`<span>🕑 ${evenement.tijdstip}</span>`);
+      }
+      if (evenement.beschrijving) {
+        metaItems.push(`<span>${evenement.beschrijving}</span>`);
+      }
+      pageMeta.innerHTML = metaItems.join('');
+
+      // ─── Bouw fotogrid ────────────────────────────────────────────────────
+      const fotos = evenement.fotos || [];
+
+      if (fotos.length === 0) {
+        photoGrid.innerHTML = `<p class="geen-fotos" style="grid-column:1/-1">Foto's volgen binnenkort.</p>`;
+        return;
+      }
+
+      // Wijd-patroon: elke 5e foto is breed, elke 7e is hoog
+      photoGrid.innerHTML = fotos.map((foto, index) => {
+        const src = foto.afbeelding || '';
+        const caption = foto.bijschrift || '';
+        const captionHtml = caption
+          ? `<span class="photo-caption">${caption}</span>`
+          : '';
+        let extraClass = '';
+        if ((index + 1) % 5 === 0) extraClass = 'wide';
+        else if ((index + 1) % 7 === 0) extraClass = 'tall';
+        return `
+          <div class="photo-cell ${extraClass}" data-index="${index}" role="button" tabindex="0" aria-label="Foto ${index + 1} openen">
+            <img src="${src}" alt="${caption || evenement.titel + ' foto ' + (index + 1)}" loading="lazy" />
+            ${captionHtml}
+          </div>`;
+      }).join('');
+
+      // ─── Lightbox logica ──────────────────────────────────────────────────
+      const lightbox      = document.getElementById('lightbox');
+      const lightboxImg   = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxPrev  = document.getElementById('lightboxPrev');
+      const lightboxNext  = document.getElementById('lightboxNext');
+      const lightboxCounter = document.getElementById('lightboxCounter');
+
+      let huidigIndex = 0;
+
+      function openLightbox(index) {
+        huidigIndex = index;
+        updateLightbox();
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lightboxClose.focus();
+      }
+
+      function sluitLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function updateLightbox() {
+        const foto = fotos[huidigIndex];
+        lightboxImg.src = foto.afbeelding || '';
+        lightboxImg.alt = foto.bijschrift || `${evenement.titel} foto ${huidigIndex + 1}`;
+        lightboxCaption.textContent = foto.bijschrift || '';
+        lightboxCounter.textContent = `${huidigIndex + 1} / ${fotos.length}`;
+        lightboxPrev.disabled = huidigIndex === 0;
+        lightboxNext.disabled = huidigIndex === fotos.length - 1;
+      }
+
+      function naarVorige() {
+        if (huidigIndex > 0) { huidigIndex--; updateLightbox(); }
+      }
+
+      function naarVolgende() {
+        if (huidigIndex < fotos.length - 1) { huidigIndex++; updateLightbox(); }
+      }
+
+      // Klikhandlers op foto-cellen
+      photoGrid.querySelectorAll('.photo-cell').forEach(cel => {
+        cel.addEventListener('click', () => openLightbox(parseInt(cel.dataset.index)));
+        cel.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(parseInt(cel.dataset.index));
+          }
+        });
+      });
+
+      lightboxClose.addEventListener('click', sluitLightbox);
+      lightboxPrev.addEventListener('click', naarVorige);
+      lightboxNext.addEventListener('click', naarVolgende);
+
+      // Klik op overlay (buiten foto) sluit lightbox
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) sluitLightbox();
+      });
+
+      // Toetsenbord: ESC sluit, pijltjes navigeren
+      document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') sluitLightbox();
+        if (e.key === 'ArrowLeft') naarVorige();
+        if (e.key === 'ArrowRight') naarVolgende();
+      });
+
+      // Swipe op mobiel
+      let touchStartX = 0;
+      lightbox.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].clientX;
+      }, { passive: true });
+      lightbox.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          diff > 0 ? naarVolgende() : naarVorige();
+        }
+      }, { passive: true });
+
+    })();
+  </script>
+
+</body>
+</html>

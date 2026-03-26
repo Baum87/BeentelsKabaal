@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "id": "koningsdag-2025",
+      "titel": "Koningsdag 2025",
+      "datum": "2025-04-27",
+      "locatie": "Openluchtconcert op het Marktplein van Bentelo",
+      "beschrijving": "Gratis openluchtconcert op het marktplein van Bentelo ter ere van Koningsdag.",
+      "omslagfoto": "/images/optreden-koningsdag.svg",
+      "fotos": []
+    },
+    {
+      "id": "voorjaar-2025",
+      "titel": "Voorjaarsconcert 2025",
+      "datum": "2025-05-17",
+      "locatie": "Grote zaal van Kulturhus De Bult, Bentelo",
+      "beschrijving": "Groot voorjaarsconcert met premières uit het nieuwe repertoire.",
+      "omslagfoto": "/images/optreden-voorjaar.svg",
+      "fotos": []
+    },
+    {
+      "id": "zomerfestival-2025",
+      "titel": "Zomerfestival 2025",
+      "datum": "2025-07-05",
+      "locatie": "Buitenpodium Erve 't Oude Erf, Twente",
+      "beschrijving": "Twee dagen muziek, bier en gezelligheid op een prachtige boerenerflocatie in het Twentse landschap.",
+      "omslagfoto": "/images/optreden-zomerfestival.svg",
+      "fotos": []
+    },
+    {
+      "id": "benefiet-2025",
+      "titel": "Benefietconcert 2025",
+      "datum": "2025-09-13",
+      "locatie": "Dorpskerk Goor — voor de Voedselbank",
+      "beschrijving": "Muziek voor een goed doel. Toegang op donatie — elke euro gaat naar de plaatselijke voedselbank.",
+      "omslagfoto": "/images/optreden-benefiet.svg",
+      "fotos": []
+    },
+    {
+      "id": "sinterklaas-2025",
+      "titel": "Sinterklaascorso 2025",
+      "datum": "2025-12-07",
+      "locatie": "Jaarlijkse optocht door de dorpskern Bentelo",
+      "beschrijving": "Jaarlijkse optocht door het centrum van Bentelo. Warme chocolademelk en speculaas gegarandeerd.",
+      "omslagfoto": "/images/optreden-sinterklaas.svg",
+      "fotos": []
+    },
+    {
+      "id": "kerstconcert-2024",
+      "titel": "Kerstconcert 2024",
+      "datum": "2024-12-20",
+      "locatie": "Sfeervolle avond in de Dorpskerk van Bentelo",
+      "beschrijving": "Een sfeervolle kerstavond vol warme muziek in de historische Dorpskerk van Bentelo.",
+      "omslagfoto": "/images/optreden-kerstconcert.svg",
+      "fotos": []
+    }
+  ]
+}
