@@ -3,11 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beentels Kabaal – Fanfare uit Bentelo</title>
+  <title>Bêentels Kabaal – Dweilorkest uit Bentelo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C97ZNE0ZDK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C97ZNE0ZDK');
+  </script>
 </head>
 <body>
 
@@ -16,12 +24,12 @@
     <div class="nav-inner">
       <a href="#top" class="logo">
         <span class="logo-icon">♩</span>
-        <span class="logo-text">Beentels Kabaal</span>
+        <span class="logo-text">Bêentels Kabaal</span>
       </a>
       <ul class="nav-links">
         <li><a href="#over">Over ons</a></li>
         <li><a href="#agenda">Agenda</a></li>
-        <li><a href="#optredens">Optredens</a></li>
+        <li><a href="#optredens">Impressie</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -31,7 +39,7 @@
     <div class="nav-mobile" id="navMobile">
       <a href="#over">Over ons</a>
       <a href="#agenda">Agenda</a>
-      <a href="#optredens">Optredens</a>
+      <a href="#optredens">Impressie</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -40,9 +48,9 @@
   <section class="hero" id="top">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Fanfare · Bentelo · Est. 1952</p>
+      <p class="hero-eyebrow">Dweilorkest · Bentelo · Est. 1998</p>
       <h1 class="hero-title">
-        <span class="gold-glow">Beentels</span>
+        <span class="gold-glow">Bêentels</span>
         <span class="gold">Kabaal</span>
       </h1>
       <p class="hero-desc">
@@ -66,18 +74,18 @@
   <!-- BANNER -->
   <div class="banner">
     <div class="banner-track">
-      <span>🎺 Trompet &nbsp;·&nbsp;</span>
       <span>🥁 Slagwerk &nbsp;·&nbsp;</span>
-      <span>🎷 Saxofoon &nbsp;·&nbsp;</span>
-      <span>🎺 Tuba &nbsp;·&nbsp;</span>
-      <span>🎵 Klarinet &nbsp;·&nbsp;</span>
-      <span>🎻 Hoorn &nbsp;·&nbsp;</span>
       <span>🎺 Trompet &nbsp;·&nbsp;</span>
-      <span>🥁 Slagwerk &nbsp;·&nbsp;</span>
       <span>🎷 Saxofoon &nbsp;·&nbsp;</span>
+      <span>🎵 Sousafoon &nbsp;·&nbsp;</span>
       <span>🎺 Tuba &nbsp;·&nbsp;</span>
-      <span>🎵 Klarinet &nbsp;·&nbsp;</span>
-      <span>🎻 Hoorn &nbsp;·&nbsp;</span>
+      <span>🎸 Trombone &nbsp;·&nbsp;</span>
+      <span>🥁 Slagwerk &nbsp;·&nbsp;</span>
+      <span>🎺 Trompet &nbsp;·&nbsp;</span>
+      <span>🎷 Saxofoon &nbsp;·&nbsp;</span>
+      <span>🎵 Sousafoon &nbsp;·&nbsp;</span>
+      <span>🎺 Tuba &nbsp;·&nbsp;</span>
+      <span>🎸 Trombone &nbsp;·&nbsp;</span>
     </div>
   </div>
 
@@ -86,38 +94,34 @@
     <div class="container grid-2">
       <div class="text-block">
         <span class="eyebrow">Over ons</span>
-        <h2>Muziek met <em>pit</em> en <em>passie</em></h2>
-        <p>Beentels Kabaal is opgericht in 1952 door een stel eigenwijze muzikanten die vonden dat Bentelo wel wat meer lawaai kon gebruiken. Zeven decennia later spelen we nog steeds — met net zoveel plezier, maar iets betere instrumenten.</p>
-        <p>Van bruiloften en jubilea tot straatparades en grootse concertzalen: wij passen ons repertoire aan, maar nooit onze energie. Zwart en goud is ons uniform, muziek is onze taal.</p>
+        <h2>Leukste muziekvereniging uit het <em>Oosten!</em></h2>
+        <p>Bêentels Kabaal. Een muziekvereniging met een dweilend accent uit het plaatsje Bentelo. Gelegen in de gemeente "Hof van Twente". Opgericht in 1998.</p>
+        <p>Lopen in een strak gekleed kostuum met bijhorende stropdas, pet en pluim? Allemaal in de maat achter elkaar aan lopen? Muziek maken die van ver voor deze tijd is? Met alle respect toch de uitstraling van menig muziekvereniging. De naam Bêentels Kabaal doet je hier niet bepaald aan denken. En dat is ook de bedoeling! Wat ooit een ontstaan is als grapje aan de bar, is nu uitgegroeid tot een volwaardig orkest.</p>
+        <p><strong>Werkwijze</strong><br />Grotendeels is de werkwijze van Bêentels Kabaal niet veel anders dan dat van andere muziekverenigingen. Er wordt les gegeven, gezamenlijk geoefend met het orkest. We verzorgen optredens, en zijn aangesloten bij de Koninklijke Muziek Federatie.</p>
         <div class="stats">
           <div class="stat">
-            <strong>73</strong>
+            <strong id="jaarActief"></strong>
             <span>jaar actief</span>
           </div>
           <div class="stat">
-            <strong>38</strong>
+            <strong>20+</strong>
             <span>muzikanten</span>
           </div>
           <div class="stat">
-            <strong>150+</strong>
+            <strong>40+</strong>
             <span>optredens/jaar</span>
-          </div>
-          <div class="stat">
-            <strong>12</strong>
-            <span>prijzen gewonnen</span>
           </div>
         </div>
       </div>
       <div class="image-block">
-        <div class="img-placeholder large" id="overOnsGroot">
-          <div class="img-icon">🎺</div>
-          <p>Fanfare in actie</p>
-        </div>
-        <div class="img-accent">
-          <div class="img-placeholder small" id="overOnsKlein">
-            <div class="img-icon">🏆</div>
-            <p>Winnaars 2024</p>
+        <div class="over-ons-slideshow" id="overOnsSlideshow">
+          <div class="over-ons-placeholder">
+            <div class="img-icon">🎺</div>
+            <p>Afbeeldingen volgen</p>
           </div>
+          <button class="oos-prev" id="oosPrev" aria-label="Vorige">&#8249;</button>
+          <button class="oos-next" id="oosNext" aria-label="Volgende">&#8250;</button>
+          <div class="oos-dots" id="oosDots"></div>
         </div>
       </div>
     </div>
@@ -128,7 +132,7 @@
     <div class="container">
       <div class="section-header">
         <span class="eyebrow eyebrow-dark">Aankomende optredens</span>
-        <h2 class="dark">Agenda <span class="gold-text">2026</span></h2>
+        <h2 class="dark">Agenda <span class="gold-text" id="agendaJaar"></span></h2>
         <p class="section-sub dark-text">Wees erbij. Het is de moeite waard.</p>
       </div>
 
@@ -142,9 +146,9 @@
   <section class="section" id="optredens">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Fotoalbums</span>
-        <h2>Onze <em>optredens</em> in beeld</h2>
-        <p class="section-sub">Klik op een optreden om de foto's te bekijken.</p>
+        <span class="eyebrow">Impressie</span>
+        <h2>Onze <em>impressie</em> in beeld</h2>
+        <p class="section-sub">Klik op een evenement om de foto's te bekijken.</p>
       </div>
       <div class="optredens-grid" id="optredensGrid">
         <p class="loading-tekst">Evenementen worden geladen…</p>
@@ -155,40 +159,48 @@
   <!-- QUOTE SLIDESHOW -->
   <section class="quote-section" id="quotes">
     <div class="container">
-      <div class="quote-slider" id="quoteSlider">
+      <div class="quote-slider" id="quoteSlider"></div>
+      <div class="quote-dots" id="quoteDots"></div>
+    </div>
+  </section>
 
-        <div class="quote-slide active">
-          <blockquote>"Beentels Kabaal speelt niet voor het publiek — ze spelen <em>mét</em> het publiek."</blockquote>
-          <cite>— Twents Dagblad, 2024</cite>
-        </div>
-
-        <div class="quote-slide">
-          <blockquote>"Zelden heb ik een fanfare gehoord die zo veel <em>energie</em> en plezier uitstraalt. Een feest voor ziel en oren."</blockquote>
-          <cite>— De Gelderlander, 2023</cite>
-        </div>
-
-        <div class="quote-slide">
-          <blockquote>"Ze kwamen, speelden, en iedereen danste. Beentels Kabaal is het <em>geheime ingrediënt</em> van elk evenement."</blockquote>
-          <cite>— Organisator Koningsdagconcert Bentelo</cite>
-        </div>
-
-        <div class="quote-slide">
-          <blockquote>"Strak, gepassioneerd en toch toegankelijk — dit is fanfare zoals het <em>hoort te klinken</em>."</blockquote>
-          <cite>— Jurylid Nationaal Fanfarekampioenschap 2022</cite>
-        </div>
-
-        <div class="quote-slide">
-          <blockquote>"Mijn kinderen vroegen of we volgend jaar <em>weer</em> mochten komen. Dat zegt genoeg."</blockquote>
-          <cite>— Bezoeker Zomerfestival 2025</cite>
-        </div>
-
+  <!-- REPERTOIRE -->
+  <section class="section" id="repertoire">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Wat we spelen</span>
+        <h2>Ons <em>repertoire</em></h2>
       </div>
-      <div class="quote-dots" id="quoteDots">
-        <button class="dot active" data-index="0"></button>
-        <button class="dot" data-index="1"></button>
-        <button class="dot" data-index="2"></button>
-        <button class="dot" data-index="3"></button>
-        <button class="dot" data-index="4"></button>
+      <div class="repertoire-grid">
+        <div class="repertoire-block">
+          <h4>Nummers</h4>
+          <ol class="repertoire-list">
+            <li>Slavenkoor / Feestmedley / Laat de zon</li>
+            <li>Inhaakpotpourri / Kleine Cafe / Engelbewaarder</li>
+            <li>Que Sera / Sweet Caroline / Beautiful Noise</li>
+            <li>Schlagerfestival / Im Herzen / Immer wieder Sonntag</li>
+            <li>Porompompero / Mexican Lady / YAMS</li>
+            <li>Bolero / Walsmedley / Lailola</li>
+            <li>Jagerlatein / Koelle Alaaf / Schutzenliezl</li>
+            <li>Hela Hola / Hallelujah / Rock me</li>
+            <li>Over and out / Fatman polka / It's a long way</li>
+            <li>Da Doo run run / Adalita</li>
+            <li>I can see / Amarillo / La Paloma</li>
+            <li>Klompendans / Treue huzar / Viva Colonia</li>
+          </ol>
+        </div>
+        <div class="repertoire-block">
+          <h4>Losse nummers</h4>
+          <ul class="repertoire-los">
+            <li>Festival der Liebe</li>
+            <li>Böhmischer Traum</li>
+            <li>Hey Jude</li>
+            <li>Sound off Silent</li>
+            <li>Bis bald, auf wiedersehn</li>
+            <li>Verdammt, Ich Lieb dich</li>
+            <li>Dan ben ik weer thuis</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -199,21 +211,21 @@
       <div class="text-block">
         <span class="eyebrow eyebrow-dark">Neem contact op</span>
         <h2 class="dark">Boek ons of <span class="gold-text">word lid</span></h2>
-        <p class="dark-text">Wil je ons boeken voor een optreden? Of wil je zelf meespelen bij een gezellige Twentse fanfare? Stuur ons een berichtje.</p>
+        <p class="dark-text">Wil je ons boeken voor een optreden? Of wil je zelf meespelen bij een gezellig Twents dweilorkest? Stuur ons een berichtje.</p>
 
         <ul class="contact-details">
           <li>
             <span class="contact-icon">📍</span>
             <div>
               <strong>Repetitielocatie</strong><br />
-              Kulturhus De Bult, Bultweg 3, 7435 PN Bentelo
+              Kabaalzaal in Bentelo
             </div>
           </li>
           <li>
             <span class="contact-icon">🕑</span>
             <div>
-              <strong>Repetitie</strong><br />
-              Elke dinsdagavond, 19:30 – 21:30 uur
+              <strong>Repetitie/lessen</strong><br />
+              Elke woensdagavond vanaf 19:30 uur
             </div>
           </li>
           <li>
@@ -240,9 +252,7 @@
       </div>
 
       <div class="form-block">
-        <form class="contact-form" id="contactForm" name="contact" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact" />
-          <p style="display:none"><input name="bot-field" /></p>
+        <form class="contact-form" id="contactForm">
           <div class="form-group">
             <label for="name">Naam</label>
             <input type="text" id="name" name="naam" placeholder="Jan Jansen" required />
@@ -267,7 +277,7 @@
             <textarea id="bericht" name="bericht" rows="5" placeholder="Vertel ons meer..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary full-width">Verstuur bericht →</button>
-          <p class="form-note">We reageren zo snel mogelijk.</p>
+          <p class="form-note">Je mail-app wordt geopend met je bericht klaar.</p>
         </form>
       </div>
     </div>
@@ -277,14 +287,14 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo-text">♩ Beentels Kabaal</span>
-        <p>Fanfare uit het hart van Twente<br />Opgericht in 1952 in Bentelo</p>
+        <span class="logo-text">♩ Bêentels Kabaal</span>
+        <p>Dweilorkest uit het hart van Twente<br />Opgericht in 1998 in Bentelo</p>
       </div>
       <div class="footer-links">
         <h5>Navigatie</h5>
         <a href="#over">Over ons</a>
         <a href="#agenda">Agenda</a>
-        <a href="#optredens">Fotoalbums</a>
+        <a href="#optredens">Impressie</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="footer-links">
@@ -295,7 +305,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Beentels Kabaal · KvK 12345678 · Bentelo, Twente</p>
+      <p>© <span id="footerJaar"></span> Bêentels Kabaal · KvK 06089170 · Lid van KNFM · Bentelo, Twente</p>
     </div>
   </footer>
 

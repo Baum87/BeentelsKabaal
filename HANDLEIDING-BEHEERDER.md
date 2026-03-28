@@ -1,4 +1,4 @@
-# Handleiding Beheerder – Beentels Kabaal Website
+# Handleiding Beheerder – Bêentels Kabaal Website
 
 **Voor wie:** Beheerder(s) van de website
 **Systeem:** Decap CMS (beheerpaneel in de browser)
@@ -28,7 +28,7 @@
 
 ```
 ┌─────────────────────────────────────────┐
-│  Beentels Kabaal – Beheerpaneel         │
+│  Bêentels Kabaal – Beheerpaneel         │
 │                                         │
 │  📅  Agenda                             │
 │  🎵  Evenementen (fotoalbums)           │

@@ -1,4 +1,4 @@
-# Infrastructuur – Beentels Kabaal Website
+# Infrastructuur – Bêentels Kabaal Website
 
 Een overzicht van hoe de website technisch in elkaar zit, voor wie hem beheert of overdraagt.
 

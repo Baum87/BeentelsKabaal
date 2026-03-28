@@ -1,6 +1,6 @@
-# Beentels Kabaal – Website
+# Bêentels Kabaal – Website
 
-Officiële website van fanfare Beentels Kabaal uit Bentelo.
+Officiële website van fanfare Bêentels Kabaal uit Bentelo.
 
 ## Technische stack
 

@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ─── Jaar invullen ───────────────────────────────────────────────────────
+  const huidigJaar = new Date().getFullYear();
+  const jaarEl = document.getElementById('jaarActief');
+  if (jaarEl) jaarEl.textContent = huidigJaar - 1998;
+  const agendaJaarEl = document.getElementById('agendaJaar');
+  if (agendaJaarEl) agendaJaarEl.textContent = huidigJaar;
+  const footerJaarEl = document.getElementById('footerJaar');
+  if (footerJaarEl) footerJaarEl.textContent = huidigJaar;
+
   // ─── Navbar scroll effect ───────────────────────────────────────────────
   const navbar = document.getElementById('navbar');
   if (navbar) {
@@ -33,54 +42,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ─── Quote slideshow ─────────────────────────────────────────────────────
-  const slides = document.querySelectorAll('.quote-slide');
-  const dots   = document.querySelectorAll('.dot');
-  let current  = 0;
-  let timer;
+  // ─── Quote slideshow (geladen uit JSON) ──────────────────────────────────
+  async function laadQuotes() {
+    const sliderEl = document.getElementById('quoteSlider');
+    const dotsEl   = document.getElementById('quoteDots');
+    if (!sliderEl) return;
+    try {
+      const res  = await fetch('/content/quotes.json');
+      const data = await res.json();
+      const items = data.items || [];
+      if (items.length === 0) return;
 
-  function showSlide(index) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
+      sliderEl.innerHTML = items.map((q, i) => `
+        <div class="quote-slide${i === 0 ? ' active' : ''}">
+          <blockquote>"${q.tekst}"</blockquote>
+          ${q.bron ? `<cite>— ${q.bron}</cite>` : ''}
+        </div>`).join('');
 
-  function startAuto() {
-    timer = setInterval(() => showSlide(current + 1), 5000);
-  }
+      dotsEl.innerHTML = items.map((_, i) => `
+        <button class="dot${i === 0 ? ' active' : ''}" data-index="${i}"></button>`).join('');
 
-  function resetAuto() {
-    clearInterval(timer);
-    startAuto();
-  }
+      const slides = sliderEl.querySelectorAll('.quote-slide');
+      const dots   = dotsEl.querySelectorAll('.dot');
+      let current  = 0;
+      let timer;
 
-  if (slides.length > 0) {
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        showSlide(parseInt(dot.dataset.index));
-        resetAuto();
+      function showSlide(index) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      function startAuto() { timer = setInterval(() => showSlide(current + 1), 5000); }
+      function resetAuto()  { clearInterval(timer); startAuto(); }
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => { showSlide(parseInt(dot.dataset.index)); resetAuto(); });
       });
-    });
 
-    // Swipe-ondersteuning op mobiel
-    const slider = document.getElementById('quoteSlider');
-    if (slider) {
+      // Swipe-ondersteuning op mobiel
       let touchStartX = 0;
-      slider.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].clientX;
-      }, { passive: true });
-      slider.addEventListener('touchend', e => {
+      sliderEl.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+      sliderEl.addEventListener('touchend', e => {
         const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) {
-          showSlide(diff > 0 ? current + 1 : current - 1);
-          resetAuto();
-        }
+        if (Math.abs(diff) > 50) { showSlide(diff > 0 ? current + 1 : current - 1); resetAuto(); }
       }, { passive: true });
-    }
 
-    startAuto();
+      startAuto();
+    } catch (e) { /* sectie blijft leeg */ }
   }
 
   // ─── Scroll fade-in animaties ────────────────────────────────────────────
@@ -105,22 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
     '.text-block, .image-block, .agenda-item, .optreden-card, .stat, .contact-details, .form-block'
   ));
 
-  // ─── Contact formulier ───────────────────────────────────────────────────
+  // ─── Contact formulier → mailto ──────────────────────────────────────────
   const form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      const original = btn.textContent;
-      btn.textContent = '✓ Bericht ontvangen!';
-      btn.style.background = 'var(--bordeaux)';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = original;
-        btn.style.background = '';
-        btn.disabled = false;
-        form.reset();
-      }, 3500);
+      const naam      = document.getElementById('name').value;
+      const email     = document.getElementById('email').value;
+      const onderwerp = document.getElementById('onderwerp').value;
+      const bericht   = document.getElementById('bericht').value;
+      const subject   = encodeURIComponent(onderwerp || 'Bericht via website');
+      const body      = encodeURIComponent(
+        `Naam: ${naam}\nE-mail: ${email}\n\n${bericht}`
+      );
+      window.location.href = `mailto:kabaal@live.nl?subject=${subject}&body=${body}`;
     });
   }
 
@@ -149,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const maanden = ['JAN','FEB','MRT','APR','MEI','JUN','JUL','AUG','SEP','OKT','NOV','DEC'];
     const maand = maanden[d.getMonth()];
     const isHoofd = item.hoofd ? 'highlight' : '';
-    const btnKlasse = item.hoofd ? '' : 'btn-outline-dark';
     const labelHtml = item.label ? `<span class="tag tag-red">${item.label}</span>` : '';
     const tijdHtml = item.tijdstip ? `<span class="agenda-time">🕑 ${item.tijdstip}</span>` : '';
     const beschrijvingHtml = item.beschrijving ? `<p>${item.beschrijving}</p>` : '';
@@ -210,30 +218,75 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="optreden-info">
         <span class="optreden-date">${dagNaam}</span>
         <h3>${item.titel}</h3>
-        <p>${item.locatie}</p>
+        ${item.locatie ? `<p>${item.locatie}</p>` : ''}
         ${fotoTekst}
       </div>
     </a>`;
   }
 
-  // ─── Over ons afbeeldingen laden ─────────────────────────────────────
+  // ─── Over ons slideshow ──────────────────────────────────────────────
   async function laadOverOns() {
+    const wrap = document.getElementById('overOnsSlideshow');
+    if (!wrap) return;
     try {
       const res = await fetch('/content/over-ons.json');
       const data = await res.json();
-      if (data.afbeelding_groot) {
-        const el = document.getElementById('overOnsGroot');
-        if (el) el.innerHTML = `<img src="${data.afbeelding_groot}" alt="Fanfare in actie" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" />`;
+      const fotos = data.afbeeldingen || [];
+      if (fotos.length === 0) return;
+
+      // Placeholder verwijderen
+      const ph = wrap.querySelector('.over-ons-placeholder');
+      if (ph) ph.remove();
+
+      // Afbeeldingen injecteren
+      fotos.forEach((f, i) => {
+        const img = document.createElement('img');
+        img.src = f.afbeelding;
+        img.alt = f.alt || 'Bêentels Kabaal';
+        if (i === 0) img.classList.add('active');
+        wrap.insertBefore(img, wrap.querySelector('.oos-prev'));
+      });
+
+      const imgs = wrap.querySelectorAll('img');
+      const dotsEl = document.getElementById('oosDots');
+      let idx = 0;
+
+      // Dots aanmaken
+      if (imgs.length > 1) {
+        imgs.forEach((_, i) => {
+          const d = document.createElement('button');
+          d.className = 'oos-dot' + (i === 0 ? ' active' : '');
+          d.addEventListener('click', () => { goTo(i); resetOosTimer(); });
+          dotsEl.appendChild(d);
+        });
+      } else {
+        wrap.querySelector('.oos-prev').classList.add('hidden');
+        wrap.querySelector('.oos-next').classList.add('hidden');
       }
-      if (data.afbeelding_klein) {
-        const el = document.getElementById('overOnsKlein');
-        if (el) el.innerHTML = `<img src="${data.afbeelding_klein}" alt="Beentels Kabaal" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" />`;
+
+      function goTo(n) {
+        imgs[idx].classList.remove('active');
+        dotsEl.querySelectorAll('.oos-dot')[idx]?.classList.remove('active');
+        idx = (n + imgs.length) % imgs.length;
+        imgs[idx].classList.add('active');
+        dotsEl.querySelectorAll('.oos-dot')[idx]?.classList.add('active');
       }
-    } catch (e) { /* placeholders blijven zichtbaar */ }
+
+      document.getElementById('oosPrev').addEventListener('click', () => { goTo(idx - 1); resetOosTimer(); });
+      document.getElementById('oosNext').addEventListener('click', () => { goTo(idx + 1); resetOosTimer(); });
+
+      let oosTimer = imgs.length > 1 ? setInterval(() => goTo(idx + 1), 4000) : null;
+      function resetOosTimer() {
+        if (!oosTimer) return;
+        clearInterval(oosTimer);
+        oosTimer = setInterval(() => goTo(idx + 1), 4000);
+      }
+    } catch (e) { /* placeholder blijft zichtbaar */ }
   }
 
   laadAgenda();
   laadEvenementen();
   laadOverOns();
+  laadQuotes();
 
 });

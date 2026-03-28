@@ -59,31 +59,33 @@ collections:
     label: Over ons
     files:
       - name: over_ons
-        label: Afbeeldingen
+        label: Afbeeldingen slideshow
         file: content/over-ons.json
         format: json
         fields:
-          - name: afbeelding_groot
-            label: Grote afbeelding
-            widget: image
-            required: false
-            hint: "Hoofdfoto rechts naast de tekst"
-          - name: afbeelding_klein
-            label: Kleine afbeelding
-            widget: image
-            required: false
-            hint: "Kleine foto rechtsonder"
+          - name: afbeeldingen
+            label: Afbeeldingen slideshow
+            widget: list
+            hint: "Voeg afbeeldingen toe voor de slideshow naast de tekst"
+            fields:
+              - name: afbeelding
+                label: Afbeelding
+                widget: image
+              - name: alt
+                label: Beschrijving (alt-tekst)
+                widget: string
+                required: false
 
-  - name: evenementen
-    label: Evenementen
+  - name: impressie
+    label: Impressie
     files:
-      - name: evenementen
-        label: Evenementen
+      - name: impressie
+        label: Impressie
         file: content/evenementen.json
         format: json
         fields:
           - name: items
-            label: Evenementen
+            label: Impressie items
             widget: list
             fields:
               - name: id
@@ -100,9 +102,11 @@ collections:
               - name: locatie
                 label: Locatie
                 widget: string
+                required: false
               - name: beschrijving
                 label: Beschrijving
                 widget: text
+                required: false
               - name: omslagfoto
                 label: Omslagfoto
                 widget: image
@@ -117,3 +121,23 @@ collections:
                     label: Bijschrift
                     widget: string
                     required: false
+
+  - name: quotes
+    label: Citaten slideshow
+    files:
+      - name: quotes
+        label: Citaten
+        file: content/quotes.json
+        format: json
+        fields:
+          - name: items
+            label: Citaten
+            widget: list
+            fields:
+              - name: tekst
+                label: Citaat tekst
+                widget: text
+              - name: bron
+                label: Bron (optioneel)
+                widget: string
+                required: false
