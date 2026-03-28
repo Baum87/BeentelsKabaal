@@ -311,7 +311,7 @@ img { max-width: 100%; display: block; }
   position: absolute;
   font-size: clamp(2rem, 5vw, 4rem);
   color: rgba(201,168,76,1);
-  opacity: 0.4;
+  opacity: 0.15;
   animation: fadeNote 4s ease-in-out infinite;
   text-shadow: 0 0 20px rgba(201,168,76,0.3);
 }
@@ -323,8 +323,8 @@ img { max-width: 100%; display: block; }
 .hero-notes span:nth-child(5) { top: 80%; left: 40%; animation-delay: 3.2s; }
 
 @keyframes fadeNote {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.75; }
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
 }
 
 
