@@ -7,6 +7,11 @@
 [context.branch-deploy]
   command = "echo 'skip'"
 
+[[redirects]]
+  from = "/leden"
+  to = "/leden.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]

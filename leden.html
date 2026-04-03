@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ledenportaal – Bêentels Kabaal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:      #0a0a0a;
+      --black-soft: #111111;
+      --black-mid:  #1a1a1a;
+      --black-card: #1e1e1e;
+      --gold:       #c9a84c;
+      --gold-light: #e8c96a;
+      --white:      #ffffff;
+      --text-light: rgba(255,255,255,0.72);
+      --text-muted: rgba(255,255,255,0.44);
+      --radius:     12px;
+      --transition: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,10,10,0.95);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-user {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .btn-logout {
+      font-size: 0.85rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--gold);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .btn-logout:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* LOGIN SCHERM */
+    #login-scherm {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .login-card {
+      background: var(--black-card);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .login-card .muzieknoot {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+      opacity: 0.5;
+    }
+
+    .login-card h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .login-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .btn-login {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition);
+      width: 100%;
+    }
+
+    .btn-login:hover {
+      background: var(--gold-light);
+    }
+
+    /* INHOUD NA INLOGGEN */
+    #inhoud {
+      flex: 1;
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .pagina-titel {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .pagina-subtitel {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* PROGRAMMA KAART */
+    .programma-kaart {
+      background: var(--black-card);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .programma-kaart.huidig {
+      border-color: rgba(201,168,76,0.5);
+    }
+
+    .programma-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 1.5rem;
+      background: rgba(201,168,76,0.06);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .programma-datum {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+
+    .badge-huidig {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .programma-nummers {
+      list-style: none;
+      padding: 1rem 1.5rem;
+    }
+
+    .programma-nummers li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .programma-nummers li:last-child {
+      border-bottom: none;
+    }
+
+    .nummer-index {
+      font-size: 0.8rem;
+      color: var(--gold);
+      opacity: 0.6;
+      width: 1.5rem;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .leeg-melding {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .leeg-melding span {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.75rem;
+      opacity: 0.4;
+    }
+
+    /* TERUG LINK */
+    .terug-link {
+      display: inline-block;
+      margin-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .terug-link:hover { color: var(--gold); }
+
+    /* VERBORGEN */
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Bêentels Kabaal</a>
+    <div class="nav-right">
+      <span class="nav-user hidden" id="nav-gebruiker"></span>
+      <button class="btn-logout hidden" id="btn-uitloggen">Uitloggen</button>
+    </div>
+  </nav>
+
+  <!-- LOGIN SCHERM -->
+  <div id="login-scherm">
+    <div class="login-card">
+      <div class="muzieknoot">♫</div>
+      <h1>Ledenportaal</h1>
+      <p>Log in om het repetitie&shy;programma van deze week te bekijken.</p>
+      <button class="btn-login" id="btn-inloggen">Inloggen</button>
+    </div>
+  </div>
+
+  <!-- INHOUD (alleen na inloggen) -->
+  <div id="inhoud" class="hidden">
+    <h1 class="pagina-titel">Repetitie programma</h1>
+    <p class="pagina-subtitel">Overzicht van alle geplande repetities</p>
+    <div id="programma-lijst"></div>
+    <a href="/" class="terug-link">← Terug naar de website</a>
+  </div>
+
+  <script>
+    const loginScherm = document.getElementById('login-scherm');
+    const inhoud = document.getElementById('inhoud');
+    const btnInloggen = document.getElementById('btn-inloggen');
+    const btnUitloggen = document.getElementById('btn-uitloggen');
+    const navGebruiker = document.getElementById('nav-gebruiker');
+    const programmLijst = document.getElementById('programma-lijst');
+
+    function toonInhoud(gebruiker) {
+      loginScherm.classList.add('hidden');
+      inhoud.classList.remove('hidden');
+      navGebruiker.textContent = gebruiker.email;
+      navGebruiker.classList.remove('hidden');
+      btnUitloggen.classList.remove('hidden');
+      laadProgramma();
+    }
+
+    function toonLogin() {
+      loginScherm.classList.remove('hidden');
+      inhoud.classList.add('hidden');
+      navGebruiker.classList.add('hidden');
+      btnUitloggen.classList.add('hidden');
+    }
+
+    function formatDatum(datumStr) {
+      const datum = new Date(datumStr);
+      return datum.toLocaleDateString('nl-NL', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+    }
+
+    function isHuidig(datumStr) {
+      const nu = new Date();
+      const datum = new Date(datumStr);
+      const maandag = new Date(nu);
+      maandag.setDate(nu.getDate() - nu.getDay() + 1);
+      maandag.setHours(0, 0, 0, 0);
+      const zondag = new Date(maandag);
+      zondag.setDate(maandag.getDate() + 6);
+      zondag.setHours(23, 59, 59, 999);
+      return datum >= maandag && datum <= zondag;
+    }
+
+    async function laadProgramma() {
+      try {
+        const res = await fetch('/content/programma.json?t=' + Date.now());
+        const data = await res.json();
+        const items = data.items || [];
+
+        if (items.length === 0) {
+          programmLijst.innerHTML = '<div class="leeg-melding"><span>♩</span>Nog geen programma gepland.</div>';
+          return;
+        }
+
+        // Sorteer: nieuwste eerst
+        items.sort((a, b) => new Date(b.datum) - new Date(a.datum));
+
+        programmLijst.innerHTML = items.map(item => {
+          const huidig = isHuidig(item.datum);
+          const nummers = (item.nummers || []).map((n, i) =>
+            `<li><span class="nummer-index">${i + 1}.</span>${n.titel}</li>`
+          ).join('');
+
+          return `
+            <div class="programma-kaart${huidig ? ' huidig' : ''}">
+              <div class="programma-header">
+                <span class="programma-datum">${formatDatum(item.datum)}</span>
+                ${huidig ? '<span class="badge-huidig">Deze week</span>' : ''}
+              </div>
+              <ul class="programma-nummers">
+                ${nummers || '<li><span class="nummer-index">–</span>Geen nummers ingevoerd</li>'}
+              </ul>
+            </div>`;
+        }).join('');
+
+      } catch (e) {
+        programmLijst.innerHTML = '<div class="leeg-melding"><span>♩</span>Programma kon niet worden geladen.</div>';
+      }
+    }
+
+    // Netlify Identity
+    netlifyIdentity.on('init', user => {
+      if (user) { toonInhoud(user); } else { toonLogin(); }
+    });
+
+    netlifyIdentity.on('login', user => {
+      netlifyIdentity.close();
+      toonInhoud(user);
+    });
+
+    netlifyIdentity.on('logout', () => toonLogin());
+
+    btnInloggen.addEventListener('click', () => netlifyIdentity.open('login'));
+    btnUitloggen.addEventListener('click', () => netlifyIdentity.logout());
+  </script>
+
+</body>
+</html>

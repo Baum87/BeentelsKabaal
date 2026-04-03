@@ -148,6 +148,34 @@ collections:
               label: Nummer
               widget: string
 
+  - name: programma
+    label: Repetitie programma
+    files:
+      - name: programma
+        label: Repetitie programma
+        file: content/programma.json
+        format: json
+        fields:
+          - name: items
+            label: Programma's
+            widget: list
+            fields:
+              - name: datum
+                label: Datum
+                widget: datetime
+                format: YYYY-MM-DD
+                date_format: DD-MM-YYYY
+                time_format: false
+                hint: "Datum van de repetitie"
+              - name: nummers
+                label: Nummers
+                widget: list
+                hint: "Lijst met nummers die geoefend worden"
+                field:
+                  name: titel
+                  label: Titel
+                  widget: string
+
   - name: quotes
     label: Citaten slideshow
     files:

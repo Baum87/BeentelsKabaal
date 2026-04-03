@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "datum": "2026-04-03",
+      "nummers": [
+        { "titel": "Voorbeeldnummer 1" },
+        { "titel": "Voorbeeldnummer 2" },
+        { "titel": "Voorbeeldnummer 3" }
+      ]
+    }
+  ]
+}
