@@ -35,38 +35,61 @@
       flex-direction: column;
     }
 
-    /* NAV */
-    nav {
+    /* NAV — zelfde als hoofdpagina */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.95);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
-      background: rgba(10,10,10,0.95);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 64px;
     }
 
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      color: var(--gold);
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       text-decoration: none;
     }
 
-    .nav-right {
+    .logo-icon {
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--white);
+    }
+
+    /* GEBRUIKER ONDER SUBKOP */
+    .gebruiker-balk {
       display: flex;
       align-items: center;
       gap: 1rem;
+      margin-bottom: 2rem;
     }
 
     .nav-user {
       font-size: 0.85rem;
-      color: var(--text-light);
+      color: var(--text-muted);
     }
 
     .btn-logout {
-      font-size: 0.85rem;
-      padding: 0.4rem 1rem;
-      border: 1px solid rgba(201,168,76,0.4);
+      font-size: 0.8rem;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid rgba(201,168,76,0.35);
       border-radius: 6px;
       background: transparent;
       color: var(--gold);
@@ -279,8 +302,7 @@
     }
 
     @media (max-width: 480px) {
-      nav { padding: 0.9rem 1rem; }
-      .nav-user { display: none; }
+      .nav-inner { padding: 0 1rem; }
       #inhoud { padding: 1.5rem 1rem; }
       .pagina-titel { font-size: 1.6rem; }
       .programma-header { padding: 1rem; }
@@ -321,11 +343,12 @@
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-logo">Bêentels Kabaal</a>
-    <div class="nav-right">
-      <span class="nav-user hidden" id="nav-gebruiker"></span>
-      <button class="btn-logout hidden" id="btn-uitloggen">Uitloggen</button>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <span class="logo-icon">♩</span>
+        <span class="logo-text">Bêentels Kabaal</span>
+      </a>
     </div>
   </nav>
 
@@ -342,7 +365,11 @@
   <!-- INHOUD (alleen na inloggen) -->
   <div id="inhoud" class="hidden">
     <h1 class="pagina-titel">Repetitie programma</h1>
-    <p class="pagina-subtitel">Overzicht van alle geplande repetities</p>
+    <div class="gebruiker-balk">
+      <p class="pagina-subtitel" style="margin-bottom:0">Overzicht van alle geplande repetities</p>
+      <span class="nav-user hidden" id="nav-gebruiker"></span>
+      <button class="btn-logout hidden" id="btn-uitloggen">Uitloggen</button>
+    </div>
     <div id="programma-lijst"></div>
     <a href="/" class="terug-link">← Terug naar de website</a>
   </div>
